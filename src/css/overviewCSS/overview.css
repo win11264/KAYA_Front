@@ -1,0 +1,34 @@
+.container {
+  height: 100%;
+  width: 375px;
+  background-color: aquamarine;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+#KayaDes {
+  background-image: url("../../img/KayaDesBg.jpg");
+  height: 200px;
+  background-size: cover;
+}
+
+#quick1 {
+  background-image: url("../../img/quickLinkExchange.jpg");
+  background-size: cover;
+}
+
+#quick2 {
+  background-image: url("../../img/quickLinkMall.jpg");
+  background-size: cover;
+}
+
+.pro1 {
+  background-image: url("../../img/mug.jpg");
+  background-size: cover;
+}
+
+.partnerTop {
+  background-image: url("../../img/ourPartner.jpg");
+  background-size: cover;
+}

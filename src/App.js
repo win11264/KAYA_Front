@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import Container from "./components/overviews/Container";
+import Home from "./pages/Home";
+import Header from "./components/overviews/Header";
+import Footer from "./components/overviews/Footer";
+import Hamburger from "./components/overviews/Hamburger";
+import LoginRegister from "./pages/LoginRegister";
+import Exchange from "./pages/Exchange";
+import ShoppingMall from "./pages/ShoppingMall";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Switch>
+          <Container>
+            <Header />
+            <Hamburger />
+            <Route exact path='/loginregister' component={LoginRegister} />
+            <Route exact path='/exchange' component={Exchange} />
+            <Route exact path='/mall' component={ShoppingMall} />
+
+            <Route path='/home' component={Home} />
+
+            <Footer />
+          </Container>
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 }
 
