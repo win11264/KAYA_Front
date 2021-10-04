@@ -1,9 +1,11 @@
 import React from "react";
-import PartnerCard from "../components/home/PartnerCard";
+import Popularproduct from "../components/home/PopularProduct";
 import Promotion from "../components/home/Promotion";
 import SearchBar from "../components/overviews/SearchBar";
 import MallTop from "../components/shoppingMall/MallTop";
 import PartnerList from "../components/shoppingMall/PartnerList";
+
+import AllProduct from "../components/shoppingMall/AllProduct";
 
 const ShoppingMall = () => {
   return (
@@ -12,6 +14,8 @@ const ShoppingMall = () => {
       <MallTop />
       <Promotion pro='pro1' />
       <PartnerList />
+      <Popularproduct />
+      <AllProduct />
     </div>
   );
 };

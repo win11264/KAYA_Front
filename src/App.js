@@ -8,6 +8,7 @@ import Hamburger from "./components/overviews/Hamburger";
 import LoginRegister from "./pages/LoginRegister";
 import Exchange from "./pages/Exchange";
 import ShoppingMall from "./pages/ShoppingMall";
+import ProductDetail from "./pages/ProductDetail";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Hamburger />
             <Route exact path='/loginregister' component={LoginRegister} />
             <Route exact path='/exchange' component={Exchange} />
+            <Route exact path='/productdetail' component={ProductDetail} />
             <Route exact path='/mall' component={ShoppingMall} />
 
             <Route path='/home' component={Home} />

@@ -3,14 +3,21 @@ import React from "react";
 const Promotion = (props) => {
   return (
     <div style={{ height: "170px" }} className='d-flex'>
-      <i class='bi bi-caret-left ps-1'></i>
+      <i
+        class='bi bi-arrow-left-circle-fill'
+        style={{
+          position: "absolute",
+          zIndex: "2",
+          marginLeft: "7px",
+          marginTop: "80px",
+        }}></i>
       <div
-        style={{ position: "relative" }}
+        style={{ position: "relative", zIndex: "1" }}
         className={`w-50 h-100 bg-warning ${props.pro}`}></div>
       <div
         className='w-50 h-100 bg-white ps-3 d-flex
       flex-column justify-content-center'
-        style={{ position: "relative" }}>
+        style={{ position: "relative", zIndex: "1" }}>
         <p className='fs-5 fw-bold'>Creamy Mug</p>
         <p className='fs-6 text-warning' style={{ marginTop: "-15px" }}>
           Greenery Inc.
@@ -32,7 +39,14 @@ const Promotion = (props) => {
           Due Date : 10 / 11 / 21
         </p>
       </div>
-      <i class='bi bi-caret-right pe-1' style={{ position: "inherit" }}></i>
+      <i
+        class='bi bi-arrow-right-circle-fill'
+        style={{
+          position: "absolute",
+          zIndex: "2",
+          marginLeft: "350px",
+          marginTop: "80px",
+        }}></i>
     </div>
   );
 };
