@@ -4,7 +4,7 @@ const Register = () => {
   return (
     <form
       className=' d-flex justify-content-center align-items-center flex-column bg-white'
-      style={{ height: "480px" }}>
+      style={{ height: "520px" }}>
       <input
         className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
         id='firstNameInput'
@@ -32,6 +32,12 @@ const Register = () => {
         className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
         id='emailInput'
         placeholder='Email Address'
+        style={{ fontSize: "14px", height: "30px" }}
+      />
+      <input
+        className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
+        id='emailInput'
+        placeholder='Mobile No.'
         style={{ fontSize: "14px", height: "30px" }}
       />
       <input

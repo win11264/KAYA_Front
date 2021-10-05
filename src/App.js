@@ -9,6 +9,9 @@ import LoginRegister from "./pages/LoginRegister";
 import Exchange from "./pages/Exchange";
 import ShoppingMall from "./pages/ShoppingMall";
 import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
+import Payment from "./pages/Payment";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
             <Route exact path='/exchange' component={Exchange} />
             <Route exact path='/productdetail' component={ProductDetail} />
             <Route exact path='/mall' component={ShoppingMall} />
+            <Route exact path='/cart' component={Cart} />
+            <Route exact path='/payment' component={Payment} />
+            <Route exact path='/user' component={UserProfile} />
 
             <Route path='/home' component={Home} />
 
