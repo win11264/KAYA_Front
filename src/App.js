@@ -12,6 +12,8 @@ import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Payment from "./pages/Payment";
 import UserProfile from "./pages/UserProfile";
+import ContactUs from "./pages/ContactUs";
+import BackHome from "./pages/BackHome";
 
 function App() {
   return (
@@ -28,8 +30,11 @@ function App() {
             <Route exact path='/cart' component={Cart} />
             <Route exact path='/payment' component={Payment} />
             <Route exact path='/user' component={UserProfile} />
+            <Route exact path='/contactus' component={ContactUs} />
 
-            <Route path='/home' component={Home} />
+            <Route excat path='/backhome' component={BackHome} />
+
+            <Route exact path='/' component={Home} />
 
             <Footer />
           </Container>
