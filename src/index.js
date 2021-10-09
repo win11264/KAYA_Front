@@ -2,10 +2,26 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { AuthContextProvider } from "./context/authContext";
+import { WasteListContextProvider } from "./context/wasteContext";
+
+import {
+  ProductListContext,
+  ProductListContextProvider,
+} from "./context/productContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <ProductListContextProvider>
+        <WasteListContextProvider>
+          <AuthContextProvider>
+            <App />
+          </AuthContextProvider>
+        </WasteListContextProvider>
+      </ProductListContextProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

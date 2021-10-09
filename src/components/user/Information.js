@@ -57,28 +57,6 @@ const Information = () => {
           placeholder='Home Address'
           rows='3'
           style={{ fontSize: "14px" }}></textarea>
-        <div className='d-flex py-1' style={{ marginLeft: "-105px" }}>
-          <button
-            className='btn btn-warning text-dark mx-2'
-            style={{ fontSize: "10px" }}>
-            1
-          </button>
-          <button
-            className='btn btn-dark text-white mx-2'
-            style={{ fontSize: "10px" }}>
-            2
-          </button>
-          <button
-            className='btn btn-dark text-white mx-2'
-            style={{ fontSize: "10px" }}>
-            3
-          </button>
-          <button
-            className='btn btn-success text-white mx-2'
-            style={{ fontSize: "10px" }}>
-            +
-          </button>
-        </div>
 
         <input
           className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
@@ -86,28 +64,7 @@ const Information = () => {
           placeholder='Email Address'
           style={{ fontSize: "14px", height: "30px" }}
         />
-        <div className='d-flex py-1' style={{ marginLeft: "-105px" }}>
-          <button
-            className='btn btn-warning text-dark mx-2'
-            style={{ fontSize: "10px" }}>
-            1
-          </button>
-          <button
-            className='btn btn-dark text-white mx-2'
-            style={{ fontSize: "10px" }}>
-            2
-          </button>
-          <button
-            className='btn btn-dark text-white mx-2'
-            style={{ fontSize: "10px" }}>
-            3
-          </button>
-          <button
-            className='btn btn-success text-white mx-2'
-            style={{ fontSize: "10px" }}>
-            +
-          </button>
-        </div>
+
         <input
           className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
           id='usernameInput'

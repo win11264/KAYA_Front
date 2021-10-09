@@ -10,8 +10,8 @@ function Home(props) {
     <div>
       <Kayadescription />
       <div className='d-flex'>
-        <Quicklink id='1' title='KAYA' subtitle='Exchange' />
-        <Quicklink id='2' title='KAYA' subtitle='Mall' />
+        <Quicklink id='1' title='KAYA' subtitle='Exchange' link='exchange' />
+        <Quicklink id='2' title='KAYA' subtitle='Mall' link='mall' />
       </div>
       <Promotion pro='pro1' />
       <Popularproduct />

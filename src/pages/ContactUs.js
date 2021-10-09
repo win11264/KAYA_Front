@@ -4,7 +4,8 @@ const ContactUs = () => {
   return (
     <div
       className='w-100 bg-white d-flex flex-column 
-    align-items-center justify-content-center'>
+    align-items-center justify-content-center'
+      style={{ minHeight: "712px" }}>
       <div
         className='w-75 d-flex flex-column 
     align-items-center justify-content-center text-center my-2 mt-4'>
