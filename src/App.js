@@ -20,9 +20,12 @@ import BackPromo from "./pages/backyard/BackPromo";
 import BackPartner from "./pages/backyard/BackPartner";
 import BackProduct from "./pages/backyard/BackProduct";
 import BackExc from "./pages/backyard/BackExc";
+import route from "./config/route";
 
 function App() {
   const { user } = useContext(AuthContext);
+  console.log(user);
+
   return (
     <>
       <Switch>

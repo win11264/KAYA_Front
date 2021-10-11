@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AddProductForm from "../../components/backhome/backProduct/AddProductForm";
+import { ProductListContext } from "../../context/productContext";
 
 const BackProduct = () => {
   const [add, setAdd] = useState(0);
+  const { productList, setProductList } = useContext(ProductListContext);
 
   const handleAdd = (e) => {
     if (add === 1) {
@@ -61,7 +63,9 @@ const BackProduct = () => {
         </button>
       )}
 
-      {add && <AddProductForm setAdd={setAdd} />}
+      {add && (
+        <AddProductForm setAdd={setAdd} setProductList={setProductList} />
+      )}
       <div
         className='w-75 bg-warning shadow rounded-3 my-2
         d-flex 

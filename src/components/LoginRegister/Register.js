@@ -15,7 +15,6 @@ const Register = ({ setLogin, setRegister }) => {
   const history = useHistory();
 
   const handleSubmitRegister = (e) => {
-    let success = false;
     e.preventDefault();
     const formData = new FormData();
     formData.append("firstName", firstName);
@@ -39,12 +38,9 @@ const Register = ({ setLogin, setRegister }) => {
         confirmPassword,
       })
       .then(() => {
-        success = true;
-        console.log(success);
         alert('"Your account has been created. Please log in to continue."');
-        if ((success = true)) {
-          window.location.reload(true);
-        }
+
+        window.location.reload();
       })
       .catch((err) => {
         if (err.response && err.response.status === 400) {
@@ -56,7 +52,7 @@ const Register = ({ setLogin, setRegister }) => {
   return (
     <form
       className=' d-flex justify-content-center align-items-center flex-column bg-white py-2'
-      onSubmit={(e) => handleSubmitRegister}>
+      onSubmit={handleSubmitRegister}>
       <input
         className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
         id='firstNameInput'

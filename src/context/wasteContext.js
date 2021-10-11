@@ -10,8 +10,8 @@ function WasteListContextProvider({ children }) {
     axios
       .get("/waste")
       .then((res) => {
-        console.log(res.data);
         setWasteList(res.data.wastes);
+        console.log("Context Waste", res.data.wastes);
       })
       .catch((err) => {
         console.log(err);

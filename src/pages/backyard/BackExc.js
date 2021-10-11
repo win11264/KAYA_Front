@@ -7,6 +7,7 @@ import { WasteListContext } from "../../context/wasteContext";
 const BackExc = () => {
   const [add, setAdd] = useState(0);
   const { wasteList, setWasteList } = useContext(WasteListContext);
+  console.log("waste in ui", wasteList);
   // const [loading, setLoading] = useState(true);
   // useEffect(() => {
   //   setLoading(false);

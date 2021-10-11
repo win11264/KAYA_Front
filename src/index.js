@@ -10,17 +10,20 @@ import {
   ProductListContext,
   ProductListContextProvider,
 } from "./context/productContext";
+import { StoreListContextProvider } from "./context/storeContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ProductListContextProvider>
-        <WasteListContextProvider>
-          <AuthContextProvider>
-            <App />
-          </AuthContextProvider>
-        </WasteListContextProvider>
-      </ProductListContextProvider>
+      <StoreListContextProvider>
+        <ProductListContextProvider>
+          <WasteListContextProvider>
+            <AuthContextProvider>
+              <App />
+            </AuthContextProvider>
+          </WasteListContextProvider>
+        </ProductListContextProvider>
+      </StoreListContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

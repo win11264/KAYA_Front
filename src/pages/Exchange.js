@@ -14,18 +14,33 @@ const Exchange = () => {
   const [total, setTotal] = useState(0);
 
   const [boxes, setBoxes] = useState([
-    { wasteId: 0, amount: 0, rate: 0 },
-    { wasteId: 0, amount: 0, rate: 0 },
-    { wasteId: 0, amount: 0, rate: 0 },
+    { wasteId: 0, amount: 0, image: "", rate: 0 },
+    { wasteId: 0, amount: 0, image: "", rate: 0 },
+    { wasteId: 0, amount: 0, image: "", rate: 0 },
   ]);
   console.log(boxes);
   console.log("waste list out of useEffect", wasteList);
   useEffect(() => {
     console.log("waste list in use", wasteList);
     setBoxes([
-      { wasteId: wasteList?.[0]?.id, amount: 0, rate: wasteList?.[0]?.rate },
-      { wasteId: wasteList?.[0]?.id, amount: 0, rate: wasteList?.[0]?.rate },
-      { wasteId: wasteList?.[0]?.id, amount: 0, rate: wasteList?.[0]?.rate },
+      {
+        wasteId: wasteList?.[0]?.id,
+        amount: 0,
+        image: wasteList?.[0]?.image,
+        rate: wasteList?.[0]?.rate,
+      },
+      {
+        wasteId: wasteList?.[0]?.id,
+        amount: 0,
+        image: wasteList?.[0]?.image,
+        rate: wasteList?.[0]?.rate,
+      },
+      {
+        wasteId: wasteList?.[0]?.id,
+        amount: 0,
+        image: wasteList?.[0]?.image,
+        rate: wasteList?.[0]?.rate,
+      },
     ]);
   }, [wasteList]);
 

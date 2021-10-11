@@ -1,6 +1,10 @@
 import React from "react";
 
-const AddProductForm = ({ setAdd }) => {
+const AddProductForm = ({ setAdd, setProductList }) => {
+  //   const handleSubmitAdd = async e => {
+  //     e.preventDefault()
+  //     const res = await axios.post('/product',{})
+  // }
   return (
     <div
       className='w-75 bg-white shadow rounded-3 my-2'
