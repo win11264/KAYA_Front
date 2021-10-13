@@ -13,32 +13,37 @@ const Exchange = () => {
 
   const [total, setTotal] = useState(0);
 
+  // const [image, setImage] = useState(" ");
+
   const [boxes, setBoxes] = useState([
-    { wasteId: 0, amount: 0, image: "", rate: 0 },
-    { wasteId: 0, amount: 0, image: "", rate: 0 },
-    { wasteId: 0, amount: 0, image: "", rate: 0 },
+    { wasteId: 0, amount: 0, image: "", rate: 0, exchangeId: 0 },
+    { wasteId: 0, amount: 0, image: "", rate: 0, exchangeId: 0 },
+    { wasteId: 0, amount: 0, image: "", rate: 0, exchangeId: 0 },
   ]);
-  console.log(boxes);
-  console.log("waste list out of useEffect", wasteList);
+  // console.log(boxes);
+  // console.log("waste list out of useEffect", wasteList);
   useEffect(() => {
-    console.log("waste list in use", wasteList);
+    // console.log("waste list in use", wasteList);
     setBoxes([
       {
         wasteId: wasteList?.[0]?.id,
         amount: 0,
-        image: wasteList?.[0]?.image,
+        image: "",
+
         rate: wasteList?.[0]?.rate,
       },
       {
         wasteId: wasteList?.[0]?.id,
         amount: 0,
-        image: wasteList?.[0]?.image,
+        image: "",
+
         rate: wasteList?.[0]?.rate,
       },
       {
         wasteId: wasteList?.[0]?.id,
         amount: 0,
-        image: wasteList?.[0]?.image,
+        image: "",
+
         rate: wasteList?.[0]?.rate,
       },
     ]);
@@ -55,7 +60,62 @@ const Exchange = () => {
     // console.log(newTotal);
   }, [boxes]);
 
-  console.log("total coin", total);
+  console.log("page boxes", boxes);
+
+  const handleSubmitAdd = async (e) => {
+    e.preventDefault();
+    try {
+      const uploadPromises = boxes.map((item) => {
+        const formData = new FormData();
+        formData.append("wasteId", item.wasteId);
+        formData.append("amount", item.amount);
+        formData.append("thisisinput", item.image);
+        formData.append("rate", item.rate);
+        axios.post("/exchange", formData);
+      });
+      const res = await Promise.all(uploadPromises);
+      // const formData = new FormData();
+      // formData.append("wasteId", boxes?.[0]?.wasteId);
+      // formData.append("amount", boxes?.[0]?.amount);
+      // formData.append("thisisinput", boxes?.[0]?.image);
+      // formData.append("rate", boxes?.[0]?.rate);
+
+      // formData.append("wasteId", boxes?.[1]?.wasteId);
+      // formData.append("amount", boxes?.[1]?.amount);
+      // formData.append("thisisinput", boxes?.[1]?.image);
+      // formData.append("rate", boxes?.[1]?.rate);
+
+      // formData.append("wasteId", boxes?.[2]?.wasteId);
+      // formData.append("amount", boxes?.[2]?.amount);
+      // formData.append("thisisinput", boxes?.[2]?.image);
+      // formData.append("rate", boxes?.[2]?.rate);
+
+      // axios
+      //   .post("/exchange", formData)
+      //   .then((res) => {
+      //     setBoxes([
+      //       { wasteId: 0, amount: 0, image: "", rate: 0 },
+      //       { wasteId: 0, amount: 0, image: "", rate: 0 },
+      //       { wasteId: 0, amount: 0, image: "", rate: 0 },
+      //     ]);
+      //     alert("You Save The World !");
+      //   })
+      //   .catch((err) => {
+      //     console.dir(err);
+      //   });
+      console.log(res);
+      window.location.reload();
+
+      setBoxes([
+        { wasteId: 0, amount: 0, image: "", rate: 0 },
+        { wasteId: 0, amount: 0, image: "", rate: 0 },
+        { wasteId: 0, amount: 0, image: "", rate: 0 },
+      ]);
+    } catch (error) {
+      console.dir(error);
+    }
+  };
+
   return (
     <div>
       <ExcDescription />
@@ -66,6 +126,7 @@ const Exchange = () => {
           setBoxes={setBoxes}
           box={0}
           boxes={boxes}
+          // setImage={setImage}
         />
         <ExcCard
           wasteList={wasteList}
@@ -74,6 +135,7 @@ const Exchange = () => {
           setBoxes={setBoxes}
           box={1}
           boxes={boxes}
+          // setImage={setImage}
         />
         <ExcCard
           wasteList={wasteList}
@@ -81,9 +143,10 @@ const Exchange = () => {
           setBoxes={setBoxes}
           box={2}
           boxes={boxes}
+          // setImage={setImage}
         />
 
-        <SummaryCard total={total} />
+        <SummaryCard handleSubmitAdd={handleSubmitAdd} total={total} />
       </ExcList>
     </div>
   );

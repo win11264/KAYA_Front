@@ -1,10 +1,14 @@
 import React, { useContext, useState } from "react";
 import AddProductForm from "../../components/backhome/backProduct/AddProductForm";
+import ProductItem from "../../components/backhome/backProduct/ProductItem";
+
 import { ProductListContext } from "../../context/productContext";
+import { StoreListContext } from "../../context/storeContext";
 
 const BackProduct = () => {
   const [add, setAdd] = useState(0);
   const { productList, setProductList } = useContext(ProductListContext);
+  const { storeList } = useContext(StoreListContext);
 
   const handleAdd = (e) => {
     if (add === 1) {
@@ -13,6 +17,24 @@ const BackProduct = () => {
       setAdd(1);
     }
   };
+
+  const storeOption = storeList.map((item) => {
+    return (
+      <option key={item.id} value={item.id}>
+        {item.name}
+      </option>
+    );
+  });
+
+  const productOption = productList.map((item) => {
+    return (
+      <option key={item.id} value={item.id}>
+        {item.name}
+      </option>
+    );
+  });
+
+  console.log(productOption);
 
   return (
     <div
@@ -28,29 +50,17 @@ const BackProduct = () => {
         align-items-start justify-content-center py-2 px-3 fontSize'>
           <div className='my-1'>
             <label className='pe-2'>No. 1</label>
-            <select>
-              <option>Product A</option>
-              <option>Product B</option>
-              <option>Product C</option>
-            </select>
+            <select>{productOption}</select>
           </div>
 
           <div className='my-1'>
             <label className='pe-2'>No. 2</label>
-            <select>
-              <option>Product A</option>
-              <option>Product B</option>
-              <option>Product C</option>
-            </select>
+            <select>{productOption}</select>
           </div>
 
           <div className='my-1'>
             <label className='pe-2'>No. 3</label>
-            <select>
-              <option>Product A</option>
-              <option>Product B</option>
-              <option>Product C</option>
-            </select>
+            <select>{productOption}</select>
           </div>
         </form>
       </div>
@@ -64,42 +74,28 @@ const BackProduct = () => {
       )}
 
       {add && (
-        <AddProductForm setAdd={setAdd} setProductList={setProductList} />
+        <AddProductForm
+          storeList={storeList}
+          setAdd={setAdd}
+          productList={productList}
+          setProductList={setProductList}
+          storeOption={storeOption}
+        />
       )}
-      <div
-        className='w-75 bg-warning shadow rounded-3 my-2
-        d-flex 
-        align-items-start justify-content-center '
-        style={{ height: "200px" }}>
-        <div className='w-25 h-100 bg-success rounded-start'></div>
-        <div className='w-75 h-100 py-2 px-3 fontSize'>
-          <div className='my-1'>
-            <span className='pe-2'>Name :</span>
-            <span className='pe-2'>Product A</span>
-          </div>
-          <div className='my-1'>
-            <span className='pe-2'>Partner :</span>
-            <span className='pe-2'>B Store</span>
-          </div>
-          <div className='my-1'>
-            <span className='pe-2'>Price :</span>
-            <span className='pe-2'>120 KYC</span>
-          </div>
-          <div className='my-1'>
-            <span className='pe-2'>Amount :</span>
-            <span className='pe-2'>100</span>
-          </div>
-          <div className='my-1'>
-            <span className='pe-2'>Sale :</span>
-            <span className='pe-2'>15</span>
-          </div>
 
-          <div className='mt-2'>
-            <button className='btn btn-success fontSize'>Submit</button>
-            <button className='btn btn-danger fontSize ms-2'>Cancel</button>
-          </div>
-        </div>
-      </div>
+      {productList.map((item) => {
+        return (
+          <ProductItem
+            productList={productList}
+            setProductList={setProductList}
+            key={item.id}
+            list={item}
+            productList={productList}
+            storeList={storeList}
+            storeOption={storeOption}
+          />
+        );
+      })}
     </div>
   );
 };

@@ -6,10 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./context/authContext";
 import { WasteListContextProvider } from "./context/wasteContext";
 
-import {
-  ProductListContext,
-  ProductListContextProvider,
-} from "./context/productContext";
+import { ProductListContextProvider } from "./context/productContext";
 import { StoreListContextProvider } from "./context/storeContext";
 
 ReactDOM.render(

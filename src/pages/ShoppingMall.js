@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import Popularproduct from "../components/home/PopularProduct";
 import Promotion from "../components/home/Promotion";
 import SearchBar from "../components/overviews/SearchBar";
 import MallTop from "../components/shoppingMall/MallTop";
 import PartnerList from "../components/shoppingMall/PartnerList";
+import { ProductListContext } from "../context/productContext";
+import { StoreListContext } from "../context/storeContext";
 
 import AllProduct from "../components/shoppingMall/AllProduct";
 
 const ShoppingMall = () => {
+  const { productList, setProductList } = useContext(ProductListContext);
+  const { storeList } = useContext(StoreListContext);
+
   return (
     <div>
-      <SearchBar />
+      {/* <SearchBar /> */}
       <MallTop />
-      <Promotion pro='pro1' />
-      <PartnerList />
-      <Popularproduct />
+      {/* <Promotion pro='pro1' /> */}
+      {/* <PartnerList />
+      <Popularproduct /> */}
+
       <AllProduct />
     </div>
   );

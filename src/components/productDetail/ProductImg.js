@@ -1,6 +1,7 @@
 import React from "react";
 
-const ProductImg = () => {
+const ProductImg = ({ img }) => {
+  console.log(img);
   return (
     <div className='w-100 d-flex'>
       <i
@@ -11,9 +12,11 @@ const ProductImg = () => {
           marginLeft: "7px",
           marginTop: "150px",
         }}></i>
-      <div
+      <img
+        src={img}
         className='w-100 bg-success'
-        style={{ height: "300px", zIndex: "1", position: "relative" }}></div>
+        style={{ height: "300px", zIndex: "1", position: "relative" }}
+      />
 
       <i
         class='bi bi-arrow-right-circle-fill'

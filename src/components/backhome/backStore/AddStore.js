@@ -8,24 +8,37 @@ const AddStore = ({ setAdd, setStoreList }) => {
   const [contact, setContact] = useState("");
   const [image, setImage] = useState("");
 
-  console.log(name);
-
   const handleSubmitAdd = async (e) => {
     e.preventDefault();
-    const res = await axios.post("/store", {
-      name,
-      address,
-      hashtag,
-      contact,
-      image,
+
+    console.log("setStore", setStoreList);
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("address", address);
+    formData.append("hashtag", hashtag);
+    formData.append("contact", contact);
+    formData.append("thisisinput", image);
+
+    axios.post("/store", formData).then((res) => {
+      setStoreList((curr) => [res.data.uploaded, ...curr]);
+
+      setName("");
+      setAddress();
+      setHashtag("");
+      setContact("");
+      setImage("");
+      setAdd(0);
     });
-    setStoreList((currentLists) => [res.data.store, ...currentLists]);
-    setName("");
-    setAddress();
-    setHashtag("");
-    setContact("");
-    setImage("");
-    setAdd(0);
+
+    // const res = await axios.post("/store", {
+    // name,
+    // address,
+    // hashtag,
+    // contact,
+    // image,
+    // });
+    // setStoreList((currentLists) => [res.data.store, ...currentLists]);
   };
 
   const handleSubmitCancelAdd = async (e) => {
@@ -89,8 +102,9 @@ const AddStore = ({ setAdd, setStoreList }) => {
           <input
             type='file'
             className='w-75'
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            onChange={(e) => {
+              setImage(e.target.files[0]);
+            }}
           />
         </div>
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-const SummaryCard = ({ total }) => {
+const SummaryCard = ({ total, handleSubmitAdd }) => {
   return (
     <div
       className='rounded shadow bg-white my-2 d-flex'
@@ -20,7 +20,8 @@ const SummaryCard = ({ total }) => {
         <button
           type='button'
           class='btn btn-success'
-          style={{ fontSize: "12px", width: "150px" }}>
+          style={{ fontSize: "12px", width: "150px" }}
+          onClick={handleSubmitAdd}>
           Confirm Exchange
         </button>
       </div>

@@ -10,8 +10,8 @@ function ProductListContextProvider({ children }) {
     axios
       .get("/product")
       .then((res) => {
-        console.log(res.data);
-        setProductList(res.data.products);
+        console.log("context product", res.data);
+        setProductList(res.data.product);
       })
       .catch((err) => {
         console.log(err);

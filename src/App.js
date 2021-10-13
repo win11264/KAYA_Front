@@ -1,7 +1,7 @@
 import "./App.css";
 import { useContext } from "react";
 import { AuthContext } from "./context/authContext";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Container from "./components/overviews/Container";
 import Home from "./pages/Home";
 import Header from "./components/overviews/Header";
@@ -15,12 +15,11 @@ import Payment from "./pages/Payment";
 import UserProfile from "./pages/UserProfile";
 import ContactUs from "./pages/ContactUs";
 import BackHome from "./pages/backyard/BackHome";
-import { useState } from "react";
+
 import BackPromo from "./pages/backyard/BackPromo";
 import BackPartner from "./pages/backyard/BackPartner";
 import BackProduct from "./pages/backyard/BackProduct";
 import BackExc from "./pages/backyard/BackExc";
-import route from "./config/route";
 
 function App() {
   const { user } = useContext(AuthContext);

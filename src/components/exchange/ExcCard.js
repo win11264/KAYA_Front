@@ -1,10 +1,11 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import SummaryCard from "./SummaryCard";
 
 const ExcCard = ({
   wasteList,
   setWasteList,
-
+  // setImage,
   box,
   boxes,
   setBoxes,
@@ -54,6 +55,84 @@ const ExcCard = ({
   // console.log("boxes", boxes);
   // console.log(box);
 
+  const handleChangeImage = (e) => {
+    console.log(e.target.files[0]);
+    const oldArr = [...boxes];
+    const newArr = oldArr.map((item, idx) => {
+      if (idx === box) {
+        return { ...item, image: e.target.files[0] };
+      } else return item;
+    });
+    setBoxes(newArr);
+  };
+
+  const handleChangeExchangeId = (e) => {
+    const oldArr = [...boxes];
+    const newArr = oldArr.map((item, idx) => {
+      if (idx === box) {
+        return { ...item, exchangeId: +e.target.value };
+      } else return item;
+    });
+    setBoxes(newArr);
+  };
+
+  // const boxesitem = boxes.map((item) => {
+  //   return {
+  //     wasteId: item.wasteId,
+  //     amount: item.amount,
+  //     image: item.image,
+  //     exchangeId: item.exchangeId,
+  //     rate: item.rate,
+  //   };
+  // console.log("wasteid", item.wasteId);
+  // console.log("amount", item.amount);
+  // console.log("image", item.image);
+  // console.log("exchangeid", item.exchangeId);
+  // console.log("rate", item.rate);
+
+  // console.log("This is box item", boxesitem);
+  // console.log("This is box ", boxes);
+
+  // const handleSubmitAdd = async (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append("wasteId", boxes[0].wasteId);
+  //   formData.append("amount", boxes[0].amount);
+  //   formData.append("image", boxes[0].image);
+  //   formData.append("exchangeId", boxes[0].exchangeId);
+  //   formData.append("rate", boxes[0].rate);
+
+  //   axios.post("/exchange", formData).then((res) => {
+  //     setBoxes([
+  //       { wasteId: 0, amount: 0, image: "", rate: 0, exchangeId: 0 },
+  //       { wasteId: 0, amount: 0, image: "", rate: 0, exchangeId: 0 },
+  //       { wasteId: 0, amount: 0, image: "", rate: 0, exchangeId: 0 },
+  //     ]);
+  //     alert("You Save The World !");
+  //   });
+  // };
+  // const handleSubmitAdd = async (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append("name", name);
+  //   formData.append("address", address);
+  //   formData.append("hashtag", hashtag);
+  //   formData.append("contact", contact);
+  //   formData.append("thisisinput", image);
+
+  //   axios.post("/store", formData).then((res) => {
+  //     console.log(image);
+  //     setShowImage(res.data.uploaded.image);
+  //     setStoreList((curr) => [res.data.uploaded, ...curr]);
+  //     setName("");
+  //     setAddress();
+  //     setHashtag("");
+  //     setContact("");
+  //     setImage("");
+  //     setAdd(0);
+  //   });
+  // };
+
   return (
     <div
       className='rounded shadow bg-white my-2 d-flex'
@@ -85,6 +164,7 @@ const ExcCard = ({
               className='ms-2 w-75 mb-1'
               type='file'
               style={{ fontSize: "8px" }}
+              onChange={handleChangeImage}
             />
           </div>
           <div>

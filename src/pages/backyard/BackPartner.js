@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AddStore from "../../components/backhome/backStore/AddStore";
 import StoreItem from "../../components/backhome/backStore/StoreItem";
 import { StoreListContext } from "../../context/storeContext";
@@ -6,6 +6,7 @@ import { StoreListContext } from "../../context/storeContext";
 const BackPartner = () => {
   const [add, setAdd] = useState(0);
   const { storeList, setStoreList } = useContext(StoreListContext);
+  const [showImage, setShowImage] = useState("");
   console.log("Store in ui", storeList);
 
   const handleAdd = (e) => {
@@ -26,11 +27,23 @@ const BackPartner = () => {
           +
         </button>
       )}
-      {add && <AddStore setStoreList={setStoreList} setAdd={setAdd} />}
+      {add && (
+        <AddStore
+          setShowImage={setShowImage}
+          setStoreList={setStoreList}
+          setAdd={setAdd}
+        />
+      )}
 
       {storeList.map((item) => {
         return (
-          <StoreItem setStoreList={setStoreList} key={item.id} list={item} />
+          <StoreItem
+            showImage={showImage}
+            setStoreList={setStoreList}
+            key={item.id}
+            list={item}
+            storeList={storeList}
+          />
         );
       })}
     </div>

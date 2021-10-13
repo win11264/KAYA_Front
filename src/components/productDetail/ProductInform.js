@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductInform = () => {
+const ProductInform = ({ top }) => {
   return (
     <>
       <div className='d-flex justify-content-between bg-white'>
@@ -8,9 +8,9 @@ const ProductInform = () => {
           <p
             style={{ marginBottom: "-1px", marginTop: "11px" }}
             className='fw-bold fs-5'>
-            Product Name
+            {top.name}
           </p>
-          <p className='text-warning fw-bold fs-6'>30 KYC</p>
+          <p className='text-warning fw-bold fs-6'>{top.price} KYC</p>
         </div>
 
         <div className='d-flex flex-column justify-content-center align-items-end pe-3'>
@@ -20,7 +20,7 @@ const ProductInform = () => {
               marginTop: "-2px",
               fontSize: "12px",
             }}>
-            Amount : 120
+            Amount : {top.amount}
           </p>
         </div>
       </div>

@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import PopularCard from "../home/PopularCard";
 import ProductCard from "./ProductCard";
+import { ProductListContext } from "../../context/productContext";
+import { StoreListContext } from "../../context/storeContext";
+import { Link } from "react-router-dom";
 
 const AllProduct = () => {
+  const { productList, setProductList } = useContext(ProductListContext);
+  const { storeList } = useContext(StoreListContext);
+
+  console.log(productList);
   return (
     <div className='w-100 bg-white'>
       <div
@@ -23,10 +30,21 @@ const AllProduct = () => {
         </select>
       </div>
       <div className='w-100 d-flex justify-content-center align-items-center flex-column pt-4'>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {productList.map((product) => {
+          return (
+            <Link
+              to={{
+                pathname: "/productdetail",
+                state: { key: product.id, product: product, store: storeList },
+              }}>
+              <ProductCard
+                key={product.id}
+                product={product}
+                store={storeList}
+              />
+            </Link>
+          );
+        })}
         <p
           className='pt-2 fw-bold text-center text-secondary'
           style={{ fontSize: "12px" }}>
