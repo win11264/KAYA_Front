@@ -6,24 +6,51 @@ import Information from "../components/user/Information";
 
 const UserProfile = () => {
   const [userD, setUserD] = useState([]);
+  const [userExc, setUserExc] = useState([]);
+  const [userTrans, setUserTrans] = useState([]);
 
   useEffect(() => {
     axios
       .get("/userdetail")
-      .then((res) => {
-        setUserD(res.data.userDetail);
+      .then(res => {
+        setUserD(res.data.userBalance);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }, []);
 
-  console.log(userD);
+  useEffect(() => {
+    axios
+      .get("/exchange")
+      .then(res => {
+        console.log(res.data);
+        setUserExc(res.data.exc);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("/transaction")
+      .then(res => {
+        console.log(res.data);
+        setUserTrans(res.data.trans);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+
+  console.log("--This is trans", userTrans);
+
   return (
-    <div className='w-100 d-flex flex-column'>
+    <div className="w-100 d-flex flex-column">
       <Basic userD={userD} setUserD={setUserD} />
       <Information userD={userD} setUserD={setUserD} />
-      <History />
+      <History userExc={userExc} userTrans={userTrans} />
     </div>
   );
 };

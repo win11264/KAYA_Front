@@ -9,11 +9,10 @@ function UserDetailContextProvider({ children }) {
   useEffect(() => {
     axios
       .get("/userdetail")
-      .then((res) => {
-        setUserD(res.data.userDetail);
-        console.log("user Detail", res.data.userDetail);
+      .then(res => {
+        setUserD(res.data.userBalance);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }, []);

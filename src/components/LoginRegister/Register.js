@@ -12,9 +12,11 @@ const Register = ({ setLogin, setRegister }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [error, setError] = useState(false);
+
   const history = useHistory();
 
-  const handleSubmitRegister = (e) => {
+  const handleSubmitRegister = e => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("firstName", firstName);
@@ -42,7 +44,7 @@ const Register = ({ setLogin, setRegister }) => {
 
         window.location.reload();
       })
-      .catch((err) => {
+      .catch(err => {
         if (err.response && err.response.status === 400) {
           alert(err.response.data.message);
         }
@@ -51,31 +53,32 @@ const Register = ({ setLogin, setRegister }) => {
 
   return (
     <form
-      className=' d-flex justify-content-center align-items-center flex-column bg-white py-2'
-      onSubmit={handleSubmitRegister}>
+      className=" d-flex justify-content-center align-items-center flex-column bg-white py-2"
+      onSubmit={handleSubmitRegister}
+    >
       <input
-        className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
-        id='firstNameInput'
-        placeholder='First Name'
+        className="my-2  w-75 ps-2 border border-warning rounded shadow-sm"
+        id="firstNameInput"
+        placeholder="First Name"
         style={{ fontSize: "14px", height: "30px" }}
         value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
+        onChange={e => setFirstName(e.target.value)}
       />
       <input
-        className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
-        id='lastNameInput'
-        placeholder='Last Name'
+        className="my-2  w-75 ps-2 border border-warning rounded shadow-sm"
+        id="lastNameInput"
+        placeholder="Last Name"
         style={{ fontSize: "14px", height: "30px" }}
         value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
+        onChange={e => setLastName(e.target.value)}
       />
       <input
-        type='date'
-        className='my-2  w-75 ps-2 border border-warning rounded shadow-sm '
-        id='dateInput'
+        type="date"
+        className="my-2  w-75 ps-2 border border-warning rounded shadow-sm "
+        id="dateInput"
         style={{ fontSize: "14px", height: "30px", color: "gray" }}
         value={birthDate}
-        onChange={(e) => setBirthDate(e.target.value)}
+        onChange={e => setBirthDate(e.target.value)}
       />
       {/* <textarea
         className='w-75 border border-warning rounded shadow-sm ps-2 my-2'
@@ -83,48 +86,49 @@ const Register = ({ setLogin, setRegister }) => {
         rows='3'
         style={{ fontSize: "14px" }}></textarea> */}
       <input
-        className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
-        id='emailInput'
-        placeholder='Email Address'
+        className="my-2  w-75 ps-2 border border-warning rounded shadow-sm"
+        id="emailInput"
+        placeholder="Email Address"
         style={{ fontSize: "14px", height: "30px" }}
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={e => setEmail(e.target.value)}
       />
       <input
-        className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
-        id='emailInput'
-        placeholder='Mobile No.'
+        className="my-2  w-75 ps-2 border border-warning rounded shadow-sm"
+        id="emailInput"
+        placeholder="Mobile No."
         style={{ fontSize: "14px", height: "30px" }}
         value={mobileNo}
-        onChange={(e) => setMobileNo(e.target.value)}
+        onChange={e => setMobileNo(e.target.value)}
       />
       <input
-        className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
-        id='usernameInput'
-        placeholder='Username'
+        className="my-2  w-75 ps-2 border border-warning rounded shadow-sm"
+        id="usernameInput"
+        placeholder="Username"
         style={{ fontSize: "14px", height: "30px" }}
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={e => setUsername(e.target.value)}
       />
       <input
-        className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
-        id='passwordInput'
-        placeholder='Password'
+        className="my-2  w-75 ps-2 border border-warning rounded shadow-sm"
+        id="passwordInput"
+        placeholder="Password"
         style={{ fontSize: "14px", height: "30px" }}
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={e => setPassword(e.target.value)}
       />
       <input
-        className='my-2  w-75 ps-2 border border-warning rounded shadow-sm'
-        id='confirmPasswordInput'
-        placeholder='Confirm Password'
+        className="my-2  w-75 ps-2 border border-warning rounded shadow-sm"
+        id="confirmPasswordInput"
+        placeholder="Confirm Password"
         style={{ fontSize: "14px", height: "30px" }}
         value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
+        onChange={e => setConfirmPassword(e.target.value)}
       />
       <button
-        className='w-75 bg-warning border border-warning rounded shadow-sm text-center my-2'
-        style={{ fontSize: "14px", height: "30px" }}>
+        className="w-75 bg-warning border border-warning rounded shadow-sm text-center my-2"
+        style={{ fontSize: "14px", height: "30px" }}
+      >
         Create Account
       </button>
     </form>

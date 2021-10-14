@@ -11,11 +11,11 @@ import { CartContext } from "../context/cartContext";
 
 const ProductDetail = () => {
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const { cart, setCart } = useContext(CartContext);
   console.log("product", location.state.product);
   const state = location.state;
-  // console.log("state", state.store);
+  console.log("state", state);
 
   // const storeName = store.find((item) => item.id === product.storeId);
   // console.log("cart", cart);

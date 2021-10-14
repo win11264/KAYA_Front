@@ -9,11 +9,11 @@ function StoreListContextProvider({ children }) {
   useEffect(() => {
     axios
       .get("/store")
-      .then((res) => {
+      .then(res => {
         setStoreList(res.data.store);
-        console.log("context Store", res.data.store);
+        console.log("context Store", storeList);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }, []);

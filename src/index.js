@@ -8,6 +8,7 @@ import { WasteListContextProvider } from "./context/wasteContext";
 import { CartContextProvider } from "./context/cartContext";
 import { ProductListContextProvider } from "./context/productContext";
 import { StoreListContextProvider } from "./context/storeContext";
+import { UserDetailContextProvider } from "./context/userDetailContext";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,7 +18,9 @@ ReactDOM.render(
           <ProductListContextProvider>
             <WasteListContextProvider>
               <AuthContextProvider>
+                {/* <UserDetailContextProvider> */}
                 <App />
+                {/* </UserDetailContextProvider> */}
               </AuthContextProvider>
             </WasteListContextProvider>
           </ProductListContextProvider>
