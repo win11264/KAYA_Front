@@ -1,6 +1,6 @@
 import React from "react";
 
-const CartSum = () => {
+const CartSum = ({ itemPrices }) => {
   return (
     <div
       className='rounded shadow bg-white my-2 d-flex'
@@ -15,7 +15,7 @@ const CartSum = () => {
         <p
           className='text-warning fw-bold fs-1'
           style={{ marginBottom: "6px" }}>
-          999 KYC
+          {itemPrices} KYC
         </p>
         <button
           type='button'

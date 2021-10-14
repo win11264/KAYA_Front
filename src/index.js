@@ -5,7 +5,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./context/authContext";
 import { WasteListContextProvider } from "./context/wasteContext";
-
+import { CartContextProvider } from "./context/cartContext";
 import { ProductListContextProvider } from "./context/productContext";
 import { StoreListContextProvider } from "./context/storeContext";
 
@@ -13,13 +13,15 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <StoreListContextProvider>
-        <ProductListContextProvider>
-          <WasteListContextProvider>
-            <AuthContextProvider>
-              <App />
-            </AuthContextProvider>
-          </WasteListContextProvider>
-        </ProductListContextProvider>
+        <CartContextProvider>
+          <ProductListContextProvider>
+            <WasteListContextProvider>
+              <AuthContextProvider>
+                <App />
+              </AuthContextProvider>
+            </WasteListContextProvider>
+          </ProductListContextProvider>
+        </CartContextProvider>
       </StoreListContextProvider>
     </BrowserRouter>
   </React.StrictMode>,

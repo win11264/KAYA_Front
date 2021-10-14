@@ -21,7 +21,7 @@ const StoreProduct = ({ store, product }) => {
           {storeName.hashtag}
         </p>
       </div>
-      <a href='https://www.w3schools.com' className='h-100 w-25'>
+      <a href={storeName.contact} className='h-100 w-25'>
         <div className='h-100 w-100 bg-warning d-flex flex-column justify-content-center align-items-center pt-3'>
           <i class='bi bi-chat-left-dots-fill' style={{ fontSize: "20px" }}></i>
           <p className='text-dark text-center' style={{ fontSize: "13px" }}>

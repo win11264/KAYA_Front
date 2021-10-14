@@ -1,6 +1,6 @@
 import React from "react";
 
-const CardEdit = () => {
+const CardEdit = ({ add, item, remove }) => {
   return (
     <div
       className='w-100 bg-sucess d-flex justify-content-center align-items-center'
@@ -8,13 +8,17 @@ const CardEdit = () => {
       <form>
         <button
           className='btn btn-warning pt-1 '
-          style={{ fontSize: "10px", width: "15px", height: "22px" }}>
+          style={{ fontSize: "10px", width: "15px", height: "22px" }}
+          onClick={() => remove(item)}>
           -
         </button>
-        <input style={{ fontSize: "10px" }} className='w-25' />
+        <span style={{ fontSize: "10px" }} className='w-25 mx-2'>
+          {item.qty}
+        </span>
         <button
           className='btn btn-warning pt-1'
-          style={{ fontSize: "10px", width: "15px", height: "22px" }}>
+          style={{ fontSize: "10px", width: "15px", height: "22px" }}
+          onClick={() => add(item)}>
           +
         </button>
         <button
