@@ -7,11 +7,12 @@ import ReturnTop from "../components/overviews/ReturnTop";
 
 function Home(props) {
   return (
-    <div className='bg-white' style={{ minHeight: "712px" }}>
+    <div className="bg-white" style={{ minHeight: "712px" }}>
       <Kayadescription />
-      <div className='d-flex'>
-        <Quicklink id='1' title='KAYA' subtitle='Exchange' link='exchange' />
-        <Quicklink id='2' title='KAYA' subtitle='Mall' link='mall' />
+      <div className="d-flex flex-column">
+        <Quicklink id="1" title="KAYA" subtitle="Exchange" link="exchange" />
+        <Quicklink id="2" title="KAYA" subtitle="Mall" link="mall" />
+        <Quicklink id="3" title="KAYA" subtitle="Dictionary" />
       </div>
       {/* <Promotion pro='pro1' />
       <Popularproduct /> */}

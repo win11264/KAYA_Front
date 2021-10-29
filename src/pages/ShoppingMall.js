@@ -14,7 +14,7 @@ const ShoppingMall = () => {
   const { storeList } = useContext(StoreListContext);
 
   return (
-    <div>
+    <div className="bg-white" style={{ minHeight: "712px" }}>
       {/* <SearchBar /> */}
       <MallTop />
       {/* <Promotion pro='pro1' /> */}

@@ -29,6 +29,7 @@ const Cart = () => {
       cartArray,
     });
     setCart([]);
+    window.location.reload();
   };
 
   return (

@@ -62,16 +62,18 @@ const Exchange = () => {
 
   console.log("page boxes", boxes);
 
-  const handleSubmitAdd = async (e) => {
+  const handleSubmitAdd = async e => {
     e.preventDefault();
     try {
-      const uploadPromises = boxes.map((item) => {
+      const boxesFilter = boxes.filter(item => item.amount !== 0);
+      console.log(`boxesFilter`, boxesFilter);
+      const uploadPromises = boxesFilter.map(async item => {
         const formData = new FormData();
         formData.append("wasteId", item.wasteId);
         formData.append("amount", item.amount);
         formData.append("thisisinput", item.image);
         formData.append("rate", item.rate);
-        axios.post("/exchange", formData);
+        await axios.post("/exchange", formData);
       });
       const res = await Promise.all(uploadPromises);
       // const formData = new FormData();
@@ -119,7 +121,7 @@ const Exchange = () => {
   return (
     <div>
       <ExcDescription />
-      <ExcList className=''>
+      <ExcList className="">
         <ExcCard
           wasteList={wasteList}
           setWasteList={setWasteList}

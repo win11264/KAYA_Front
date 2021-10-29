@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "../../config/axios";
+import Validate from "./Validate";
 
 const Register = ({ setLogin, setRegister }) => {
   const [firstName, setFirstName] = useState("");
@@ -12,43 +13,119 @@ const Register = ({ setLogin, setRegister }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [error, setError] = useState(false);
+  // validate state
 
+  const [validateFN, setValidateFN] = useState("");
+  const [validateLN, setValidateLN] = useState("");
+  const [validateBD, setValidateBD] = useState("");
+  const [validateEM, setValidateEM] = useState("");
+  const [validateMN, setValidateMN] = useState("");
+  const [validateUS, setValidateUS] = useState("");
+  const [validatePW, setValidatePW] = useState("");
+
+  console.log("typeof mn", typeof mobileNo);
+
+  console.log(`mobileNo`, mobileNo);
   const history = useHistory();
 
   const handleSubmitRegister = e => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("firstName", firstName);
-    formData.append("lastName", lastName);
-    formData.append("birthDate", birthDate);
-    formData.append("email", email);
-    formData.append("mobileNo", mobileNo);
-    formData.append("username", username);
-    formData.append("password", password);
-    formData.append("confirmPassword", confirmPassword);
 
-    axios
-      .post("/user/register", {
-        firstName,
-        lastName,
-        birthDate,
-        email,
-        mobileNo,
-        username,
-        password,
-        confirmPassword,
-      })
-      .then(() => {
-        alert('"Your account has been created. Please log in to continue."');
+    let allPass = true;
 
-        window.location.reload();
-      })
-      .catch(err => {
-        if (err.response && err.response.status === 400) {
-          alert(err.response.data.message);
-        }
-      });
+    if (!firstName) {
+      allPass = false;
+      setValidateFN("Firstname is required");
+    } else {
+      setValidateFN("");
+    }
+
+    if (!lastName) {
+      allPass = false;
+      setValidateLN("Lastname is required");
+    } else {
+      setValidateLN("");
+    }
+
+    if (!birthDate) {
+      allPass = false;
+      setValidateBD("Birth Date is required");
+    } else {
+      setValidateBD("");
+    }
+
+    if (!email) {
+      allPass = false;
+      setValidateEM("Email is required");
+    } else {
+      setValidateEM("");
+    }
+
+    if (!mobileNo) {
+      setValidateMN("Mobile No. is required");
+      allPass = false;
+    } else if (isNaN(mobileNo)) {
+      allPass = false;
+      setValidateMN("Mobile No. must be numbers");
+    } else {
+      setValidateMN("");
+    }
+
+    if (!username) {
+      allPass = false;
+      setValidateUS("Username is required");
+    } else {
+      setValidateUS("");
+    }
+
+    if (!password) {
+      allPass = false;
+      setValidatePW("Password is required");
+    } else if (password.length < 8) {
+      allPass = false;
+      setValidatePW("Password is too short");
+    } else if (password.length > 16) {
+      allPass = false;
+      setValidatePW("Password is too long");
+    } else {
+      setValidatePW("");
+    }
+
+    console.log(`allPass`, allPass);
+
+    if (allPass === true) {
+      const formData = new FormData();
+      formData.append("firstName", firstName);
+      formData.append("lastName", lastName);
+      formData.append("birthDate", birthDate);
+      formData.append("email", email);
+      formData.append("mobileNo", mobileNo);
+      formData.append("username", username);
+      formData.append("password", password);
+      formData.append("confirmPassword", confirmPassword);
+
+      axios
+        .post("/user/register", {
+          firstName,
+          lastName,
+          birthDate,
+          email,
+          mobileNo,
+          username,
+          password,
+          confirmPassword,
+        })
+        .then(() => {
+          alert('"Your account has been created. Please log in to continue."');
+
+          window.location.reload();
+        })
+        .catch(err => {
+          if (err.response && err.response.status === 400) {
+            alert(err.response.data.message);
+          }
+        });
+    }
   };
 
   return (
@@ -64,6 +141,8 @@ const Register = ({ setLogin, setRegister }) => {
         value={firstName}
         onChange={e => setFirstName(e.target.value)}
       />
+      <p className="text-danger fw-bold">{validateFN}</p>
+
       <input
         className="my-2  w-75 ps-2 border border-warning rounded shadow-sm"
         id="lastNameInput"
@@ -72,6 +151,8 @@ const Register = ({ setLogin, setRegister }) => {
         value={lastName}
         onChange={e => setLastName(e.target.value)}
       />
+      <p className="text-danger fw-bold">{validateLN}</p>
+
       <input
         type="date"
         className="my-2  w-75 ps-2 border border-warning rounded shadow-sm "
@@ -80,6 +161,8 @@ const Register = ({ setLogin, setRegister }) => {
         value={birthDate}
         onChange={e => setBirthDate(e.target.value)}
       />
+      <p className="text-danger fw-bold">{validateBD}</p>
+
       {/* <textarea
         className='w-75 border border-warning rounded shadow-sm ps-2 my-2'
         placeholder='Home Address'
@@ -93,14 +176,17 @@ const Register = ({ setLogin, setRegister }) => {
         value={email}
         onChange={e => setEmail(e.target.value)}
       />
+      <p className="text-danger fw-bold">{validateEM}</p>
+
       <input
         className="my-2  w-75 ps-2 border border-warning rounded shadow-sm"
-        id="emailInput"
         placeholder="Mobile No."
         style={{ fontSize: "14px", height: "30px" }}
         value={mobileNo}
         onChange={e => setMobileNo(e.target.value)}
       />
+      <p className="text-danger fw-bold">{validateMN}</p>
+
       <input
         className="my-2  w-75 ps-2 border border-warning rounded shadow-sm"
         id="usernameInput"
@@ -109,14 +195,18 @@ const Register = ({ setLogin, setRegister }) => {
         value={username}
         onChange={e => setUsername(e.target.value)}
       />
+      <p className="text-danger fw-bold">{validateUS}</p>
+
       <input
         className="my-2  w-75 ps-2 border border-warning rounded shadow-sm"
         id="passwordInput"
-        placeholder="Password"
+        placeholder="Password (8-16 text)"
         style={{ fontSize: "14px", height: "30px" }}
         value={password}
         onChange={e => setPassword(e.target.value)}
       />
+      <p className="text-danger fw-bold">{validatePW}</p>
+
       <input
         className="my-2  w-75 ps-2 border border-warning rounded shadow-sm"
         id="confirmPasswordInput"
@@ -125,6 +215,7 @@ const Register = ({ setLogin, setRegister }) => {
         value={confirmPassword}
         onChange={e => setConfirmPassword(e.target.value)}
       />
+
       <button
         className="w-75 bg-warning border border-warning rounded shadow-sm text-center my-2"
         style={{ fontSize: "14px", height: "30px" }}

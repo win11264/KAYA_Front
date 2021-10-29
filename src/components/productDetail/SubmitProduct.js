@@ -28,14 +28,14 @@ const SubmitProduct = ({ cart, setCart, product }) => {
         <p>Add to Cart</p>
         <i class="bi bi-cart-fill mx-2"></i>
       </button>
-      <button
+      {/* <button
         type="button"
         className="btn btn-success d-flex justify-content-center m-2"
         style={{ width: "150px" }}
       >
         <p>Buy Now</p>
         <i class="bi bi-cash-coin mx-2"></i>
-      </button>
+      </button> */}
     </div>
   );
 };

@@ -25,6 +25,11 @@
   background-size: cover;
 }
 
+#quick3 {
+  background-image: url("../../img/PlasticContainer.jpg");
+  background-size: cover;
+}
+
 .pro1 {
   background-image: url("../../img/mug.jpg");
   background-size: cover;

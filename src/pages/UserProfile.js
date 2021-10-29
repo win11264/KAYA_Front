@@ -47,7 +47,7 @@ const UserProfile = () => {
   console.log("--This is trans", userTrans);
 
   return (
-    <div className="w-100 d-flex flex-column">
+    <div className='w-100 d-flex flex-column' style={{ minHeight: "712px" }}>
       <Basic userD={userD} setUserD={setUserD} />
       <Information userD={userD} setUserD={setUserD} />
       <History userExc={userExc} userTrans={userTrans} />

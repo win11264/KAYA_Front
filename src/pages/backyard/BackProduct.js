@@ -6,19 +6,19 @@ import { ProductListContext } from "../../context/productContext";
 import { StoreListContext } from "../../context/storeContext";
 
 const BackProduct = () => {
-  const [add, setAdd] = useState(0);
+  const [add, setAdd] = useState("");
   const { productList, setProductList } = useContext(ProductListContext);
   const { storeList } = useContext(StoreListContext);
 
-  const handleAdd = (e) => {
+  const handleAdd = e => {
     if (add === 1) {
-      setAdd(0);
+      setAdd("");
     } else {
       setAdd(1);
     }
   };
 
-  const storeOption = storeList.map((item) => {
+  const storeOption = storeList.map(item => {
     return (
       <option key={item.id} value={item.id}>
         {item.name}
@@ -26,7 +26,18 @@ const BackProduct = () => {
     );
   });
 
-  const productOption = productList.map((item) => {
+  const storeCheck = storeList.map(item => {
+    return item.id;
+  });
+
+  console.log(`storeCheck`, storeCheck);
+
+  const check = productList.filter(item => storeCheck.includes(item.storeId));
+  console.log(`check`, check);
+
+  console.log("store option", storeOption);
+
+  const productOption = productList.map(item => {
     return (
       <option key={item.id} value={item.id}>
         {item.name}
@@ -34,45 +45,21 @@ const BackProduct = () => {
     );
   });
 
-  console.log(productOption);
+  const productSort = check.sort(function (a, b) {
+    return b.id - a.id;
+  });
 
   return (
     <div
-      className='w-100 bg-white d-flex flex-column align-items-center justify-content-center py-4'
-      style={{ minHeight: "712px" }}>
-      <p>Most Popular Product</p>
-
-      <div
-        className='w-75 bg-white shadow rounded-3 my-2'
-        style={{ height: "100px" }}>
-        <form
-          className='d-flex flex-column  h-100
-        align-items-start justify-content-center py-2 px-3 fontSize'>
-          <div className='my-1'>
-            <label className='pe-2'>No. 1</label>
-            <select>{productOption}</select>
-          </div>
-
-          <div className='my-1'>
-            <label className='pe-2'>No. 2</label>
-            <select>{productOption}</select>
-          </div>
-
-          <div className='my-1'>
-            <label className='pe-2'>No. 3</label>
-            <select>{productOption}</select>
-          </div>
-        </form>
-      </div>
-
+      className="w-100 bg-white d-flex flex-column align-items-center justify-content-start py-4"
+      style={{ minHeight: "712px" }}
+    >
       <p>Product List</p>
-
       {!add && (
-        <button className='btn btn-success fontSize' onClick={handleAdd}>
+        <button className="btn btn-success fontSize" onClick={handleAdd}>
           +
         </button>
       )}
-
       {add && (
         <AddProductForm
           storeList={storeList}
@@ -82,8 +69,7 @@ const BackProduct = () => {
           storeOption={storeOption}
         />
       )}
-
-      {productList.map((item) => {
+      {productSort.map(item => {
         return (
           <ProductItem
             productList={productList}
